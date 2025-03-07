@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <input type="search" id="search" />
+        Making an ajax call with <span id="input"></span>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/6.6.7/rxjs.umd.min.js"></script>
+
+        <script>
+            // import { fromEvent } from 'rxjs';
+            const fromEvent = rxjs.fromEvent;
+            const debounceTime = rxjs.operators.debounceTime;
+
+            const searchInput$ = fromEvent(
+                document.getElementById("search"),
+                "input"
+            );
+
+            const debounceWith500 = debounceTime(500);
+
+            const searchInputAfterWait$ = debounceWith500(searchInput$);
+
+            // function square( x ) {
+            //     return x * x;
+            // }
+
+            // const result = square( 2 );
+
+            // searchInputAfterWait$.subscribe(
+            searchInputAfterWait$.subscribe({
+                next(event) {
+                    const value = event.target.value;
+                    console.log(
+                        `let us make an ajax call now to fetch the suggestions for ${value}`
+                    );
+                },
+            });
+        </script>
+    </body>
+</html>
