@@ -26,8 +26,8 @@ export class WorkshopsListComponent implements OnInit {
 
   constructor(private w: WorkshopsService) {}
 
-  ngOnInit() {
-    this.w.getWorkshops().subscribe({
+  getWorkshops() {
+    this.w.getWorkshops(this.page).subscribe({
       next: (workshops) => {
         this.workshops = workshops;
         this.loading = false;
@@ -39,7 +39,10 @@ export class WorkshopsListComponent implements OnInit {
         console.log(error);
       },
     });
-    // console.log(this.workshops);
+  }
+
+  ngOnInit() {
+    this.getWorkshops();
   }
 
   trackById(index: number, item: IWorkshop) {
@@ -49,5 +52,15 @@ export class WorkshopsListComponent implements OnInit {
 
   nextPage() {
     this.page++;
+  }
+
+  changePage(by: number) {
+    if (this.page + by <= 0) {
+      return;
+    }
+
+    this.page = this.page + by;
+
+    this.getWorkshops();
   }
 }

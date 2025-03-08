@@ -9,9 +9,14 @@ import { map } from 'rxjs/operators';
 export class WorkshopsService {
   constructor(private http: HttpClient) {}
 
-  getWorkshops() {
+  getWorkshops(page: number = 1) {
     return this.http.get<IWorkshop[]>(
-      `https://workshops-server.onrender.com/workshops/`
+      `https://workshops-server.onrender.com/workshops/`,
+      {
+        params: {
+          _page: page,
+        },
+      }
     );
     // .pipe(
     //   map( workshops => )
