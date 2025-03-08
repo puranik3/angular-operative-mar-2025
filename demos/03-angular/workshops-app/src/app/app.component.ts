@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { MenuComponent } from './menu/menu.component';
+import { HomeComponent } from './home/home.component';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,7 @@ import { MenuComponent } from './menu/menu.component';
     NgbAlertModule, // alert component
     // CommonModule, // *ngIf directive - not needed if using @if(){}
     MenuComponent,
+    HomeComponent,
   ],
 })
 export class AppComponent {
