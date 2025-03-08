@@ -1,7 +1,12 @@
-<ngb-alert type="info">
+@if(isOpen) {
+<!-- <ngb-alert type="info" *ngIf="isOpen" (closed)="toggle()"> -->
+<ngb-alert type="info" (closed)="toggle()">
   Note that this app is built using Angular 18. The APIs in Angular <= 16 are
   significantly different.
 </ngb-alert>
+} @else { }
+
+<app-menu></app-menu>
 
 <!-- {{ variable }} - interpolation -->
 <h1>{{ title }}</h1>
