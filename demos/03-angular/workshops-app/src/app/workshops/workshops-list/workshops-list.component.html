@@ -16,6 +16,12 @@
 <app-loading-spinner></app-loading-spinner>
 } @else if( !loading && error ) {
 <app-error-alert [error]="error" [page]="page"></app-error-alert>
-} @else { @for( workshop of workshops; track workshop.id ) {
-<app-item [workshop]="workshop"></app-item>
-} }
+} @else {
+<div class="row">
+  @for( workshop of workshops; track workshop.id ) {
+  <div class="col-12 col-xl-4 my-3 d-flex">
+    <app-item [workshop]="workshop"></app-item>
+  </div>
+  }
+</div>
+}
