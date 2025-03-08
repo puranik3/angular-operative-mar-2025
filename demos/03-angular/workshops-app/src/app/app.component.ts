@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 // import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { RouterOutlet } from '@angular/router';
 import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { MenuComponent } from './menu/menu.component';
 import { HomeComponent } from './home/home.component';
@@ -15,6 +16,7 @@ import { HomeComponent } from './home/home.component';
     // CommonModule, // *ngIf directive - not needed if using @if(){}
     MenuComponent,
     HomeComponent,
+    RouterOutlet,
   ],
 })
 export class AppComponent {
