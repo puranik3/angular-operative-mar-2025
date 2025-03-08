@@ -7,7 +7,7 @@ import { routes as workshopsRoutes } from './workshops/workshops.routes';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes),
     provideRouter(workshopsRoutes),
+    provideRouter(routes),
   ],
 };
