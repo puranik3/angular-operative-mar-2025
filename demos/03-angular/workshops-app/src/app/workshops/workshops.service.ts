@@ -11,7 +11,7 @@ export class WorkshopsService {
 
   getWorkshops() {
     return this.http.get<IWorkshop[]>(
-      `https://workshops-server.onrender.com/workshop/`
+      `https://workshops-server.onrender.com/workshops/`
     );
     // .pipe(
     //   map( workshops => )

@@ -17,5 +17,5 @@
 } @else if( !loading && error ) {
 <app-error-alert [error]="error" [page]="page"></app-error-alert>
 } @else { @for( workshop of workshops; track workshop.id ) {
-<div>{{ workshop.name }}</div>
+<app-item [workshop]="workshop"></app-item>
 } }

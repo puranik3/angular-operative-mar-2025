@@ -4,11 +4,17 @@ import { WorkshopsService } from '../workshops.service';
 import IWorkshop from '../models/IWorkshop';
 import { LoadingSpinnerComponent } from '../../common/loading-spinner/loading-spinner.component';
 import { ErrorAlertComponent } from '../../common/error-alert/error-alert.component';
+import { ItemComponent } from './item/item.component';
 
 @Component({
   selector: 'app-workshops-list',
   standalone: true,
-  imports: [CommonModule, LoadingSpinnerComponent, ErrorAlertComponent],
+  imports: [
+    CommonModule,
+    LoadingSpinnerComponent,
+    ErrorAlertComponent,
+    ItemComponent,
+  ],
   templateUrl: './workshops-list.component.html',
   styleUrl: './workshops-list.component.scss',
 })
