@@ -1,1 +1,21 @@
-<p>workshops-list works!</p>
+<!-- Angular 17+ -->
+<!-- @for( workshop of workshops; track workshop.id ) {
+<div>{{ workshop.name }}</div>
+} -->
+
+<!-- Since Angular 2 (minor changes in sytax based on exact version)-->
+<!--
+<div *ngFor="let workshop of workshops; trackBy: trackById">
+  {{ workshop.name }}
+</div>
+-->
+
+<button (click)="nextPage()">Next page</button>
+
+@if(loading) {
+<app-loading-spinner></app-loading-spinner>
+} @else if( !loading && error ) {
+<app-error-alert [error]="error" [page]="page"></app-error-alert>
+} @else { @for( workshop of workshops; track workshop.id ) {
+<div>{{ workshop.name }}</div>
+} }
