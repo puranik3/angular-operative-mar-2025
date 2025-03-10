@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -8,6 +8,7 @@ import { LoadingSpinnerComponent } from '../../common/loading-spinner/loading-sp
 import { ErrorAlertComponent } from '../../common/error-alert/error-alert.component';
 import { PaginationComponent } from '../../common/pagination/pagination.component';
 import { ItemComponent } from './item/item.component';
+import { ToastService } from '../../common/toast.service';
 
 @Component({
   selector: 'app-workshops-list',
@@ -28,8 +29,9 @@ export class WorkshopsListComponent implements OnInit {
   loading = true;
   error: Error | null = null;
   page = 1;
+  toastService = inject(ToastService);
 
-  filterKey = 'Angular';
+  filterKey = '';
   filteredWorkshops!: IWorkshop[];
 
   constructor(
@@ -112,5 +114,32 @@ export class WorkshopsListComponent implements OnInit {
 
   deleteWorkshop(workshop: IWorkshop) {
     console.log(workshop);
+
+    this.w.deleteWorkshopById(workshop.id).subscribe({
+      next: () => {
+        // for me (using toast service to show message)
+        this.toastService.add({
+          message: `Deleted workshop with id = ${workshop.id}`,
+          className: 'bg-success text-light',
+          duration: 5000,
+        });
+
+        // for you (using laert to show message)
+        // alert(`Deleted workshop with id = ${workshop.id}`);
+
+        // update this.workshops
+        this.workshops = this.workshops.filter((w) => w.id !== workshop.id);
+
+        // re-filter
+        this.filterWorkshops();
+      },
+      error: () => {
+        this.toastService.add({
+          message: `Could not delete workshop with id = ${workshop.id}`,
+          className: 'bg-danger text-light',
+          duration: 5000,
+        });
+      },
+    });
   }
 }

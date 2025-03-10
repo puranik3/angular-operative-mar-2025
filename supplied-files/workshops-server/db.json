@@ -168,25 +168,6 @@
         "online": false
       },
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Git-logo.svg/512px-Git-logo.svg.png"
-    },
-    {
-      "name": "JavaScript Fundamentals",
-      "category": "language",
-      "id": 12,
-      "description": "<p><strong>JavaScript (JS)</strong> is the language for scripting web pages – to enable user interactions on a web page, communicate with the backend etc.</p><p>The latest versions of JavaScript like ES2015 (ES6) have introduced a plethora of great new features that have found adoption in modern frontend and backend frameworks. A good understanding of JS, especially ES2015 features, lays a strong foundation to get started with frameworks like React and Angular, as also Node.js and Express.</p>",
-      "startDate": "2020-01-08T04:00:00.000Z",
-      "endDate": "2020-01-10T08:00:00.000Z",
-      "time": "9:00 am - 5:00 pm",
-      "location": {
-        "address": "SAP Labs, Whitefield",
-        "city": "Bangalore",
-        "state": "Karnataka"
-      },
-      "modes": {
-        "inPerson": true,
-        "online": true
-      },
-      "imageUrl": "https://camo.githubusercontent.com/055e8995558e293e52e92d7c93b9ec49a9ea6c78/68747470733a2f2f63646e2e7261776769742e636f6d2f7a656b652f6a6176617363726970742d79656c6c6f772f6d61737465722f6c6f676f2e737667"
     }
   ],
   "sessions": [
@@ -567,28 +548,6 @@
       "level": "Intermediate",
       "abstract": "Creating feature branches locally and on GitHub. Merging by resolving merge conflicts. Also covers rebasing.",
       "upvoteCount": 345
-    },
-    {
-      "id": 43,
-      "workshopId": 12,
-      "sequenceId": 1,
-      "name": "Closures",
-      "speaker": "Burke Holland",
-      "duration": 1.5,
-      "level": "Intermediate",
-      "abstract": "What a closure is and how it can be used.",
-      "upvoteCount": 505
-    },
-    {
-      "id": 44,
-      "workshopId": 12,
-      "sequenceId": 2,
-      "name": "Prototypes",
-      "speaker": "Burke Holland",
-      "duration": 2.5,
-      "level": "Advanced",
-      "abstract": "Prototypes and how they can be used.",
-      "upvoteCount": 505
     },
     {
       "sequenceId": 12,
