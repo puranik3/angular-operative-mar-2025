@@ -11,10 +11,18 @@ export class PaginationComponent {
   @Input()
   page: number = 1;
 
+  @Input()
+  loading: boolean = false;
+
   @Output()
   pageChange = new EventEmitter<number>();
 
   changePage(by: number) {
-    this.pageChange.emit(by);
+    if (this.page + by <= 0) {
+      return;
+    }
+
+    // communicate the new page number to the parent
+    this.pageChange.emit(this.page + by);
   }
 }

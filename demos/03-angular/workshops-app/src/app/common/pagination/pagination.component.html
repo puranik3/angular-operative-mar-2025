@@ -6,5 +6,10 @@
     </button>
     <button class="btn btn-primary btn-sm" (click)="changePage(1)">Next</button>
   </div>
+
+  @if(loading === true) {
+  <div>Loading page {{ page }}</div>
+  } @else {
   <div>You are viewing page {{ page }}</div>
+  }
 </div>

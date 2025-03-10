@@ -12,16 +12,17 @@
 
 <!-- <button (click)="nextPage()">Next page</button> -->
 
+<app-pagination
+  [page]="page"
+  (pageChange)="changePage($event)"
+  [loading]="loading"
+></app-pagination>
+
 @if(loading) {
 <app-loading-spinner></app-loading-spinner>
 } @else if( !loading && error ) {
 <app-error-alert [error]="error" [page]="page"></app-error-alert>
 } @else {
-<app-pagination
-  [page]="page"
-  (pageChange)="changePage($event)"
-  ></app-pagination>
-
 <div class="row">
   @for( workshop of workshops; track workshop.id ) {
   <div class="col-12 col-xl-4 my-3 d-flex">
