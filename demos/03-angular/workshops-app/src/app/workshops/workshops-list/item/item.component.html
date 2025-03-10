@@ -15,7 +15,14 @@
         {{ workshop.location | location : "short" : 40 }}
       </div>
     </div>
-    <a href="#" class="btn btn-primary">Know more</a>
+    <!--
+    <a [routerLink]="'/workshops/' + workshop.id" class="btn btn-primary"
+      >Know more</a
+    >
+    -->
+    <a [routerLink]="['/workshops', workshop.id]" class="btn btn-primary"
+      >Know more</a
+    >
   </div>
 </div>
 }
