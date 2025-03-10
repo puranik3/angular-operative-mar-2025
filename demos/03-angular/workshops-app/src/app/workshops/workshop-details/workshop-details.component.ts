@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 // this gives the individual icons we want to use
@@ -23,6 +23,7 @@ import IWorkshop from '../models/IWorkshop';
     LoadingSpinnerComponent,
     ErrorAlertComponent,
     FontAwesomeModule,
+    RouterOutlet,
   ],
   templateUrl: './workshop-details.component.html',
   styleUrl: './workshop-details.component.scss',
