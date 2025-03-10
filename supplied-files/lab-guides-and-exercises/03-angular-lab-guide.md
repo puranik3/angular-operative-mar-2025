@@ -17,6 +17,11 @@ node -v
 ```
 - __Reference__: https://nodejs.org/en
 
+Please add this to the system PATH / user PATH variable
+C:\Users\<userfolder>\AppData\Roaming\npm
+
+If you do not have `npm` folder, create it within `C:\Users\<userfolder>\AppData\Roaming`
+
 ## Step 1: Create the Angular app and run it
 - Install Angular CLI as a global Node package. Since we shall use Angular Bootstrap that does not as yet support Angular 19, we install v18.
 ```

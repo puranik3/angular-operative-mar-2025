@@ -4,6 +4,7 @@ import { WorkshopsService } from '../workshops.service';
 import IWorkshop from '../models/IWorkshop';
 import { LoadingSpinnerComponent } from '../../common/loading-spinner/loading-spinner.component';
 import { ErrorAlertComponent } from '../../common/error-alert/error-alert.component';
+import { PaginationComponent } from '../../common/pagination/pagination.component';
 import { ItemComponent } from './item/item.component';
 
 @Component({
@@ -14,6 +15,7 @@ import { ItemComponent } from './item/item.component';
     LoadingSpinnerComponent,
     ErrorAlertComponent,
     ItemComponent,
+    PaginationComponent
   ],
   templateUrl: './workshops-list.component.html',
   styleUrl: './workshops-list.component.scss',
