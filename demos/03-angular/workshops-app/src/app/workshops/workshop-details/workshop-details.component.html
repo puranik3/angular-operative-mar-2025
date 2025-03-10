@@ -46,5 +46,26 @@
   </div>
 </div>
 
-<router-outlet></router-outlet>
+<div class="mt-5">
+  <button
+    [routerLink]="['/workshops', workshop.id]"
+    routerLinkActive="btn-active"
+    [routerLinkActiveOptions]="{ exact: true }"
+    class="btn btn-primary btn-sm btn-child-link me-2"
+  >
+    Sessions List
+  </button>
+  <button
+    [routerLink]="['/workshops', workshop.id, 'add-session']"
+    routerLinkActive="btn-active"
+    [routerLinkActiveOptions]="{ exact: true }"
+    class="btn btn-primary btn-sm btn-child-link"
+  >
+    Add a session
+  </button>
+</div>
+
+<div class="my-4">
+  <router-outlet></router-outlet>
+</div>
 }
