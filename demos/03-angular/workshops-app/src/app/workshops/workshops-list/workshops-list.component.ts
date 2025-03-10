@@ -62,6 +62,16 @@ export class WorkshopsListComponent implements OnInit {
     );
   }
 
+  filterByCategory(category: string) {
+    this.w.getWorkshops(this.page, category).subscribe({
+        next: (workshops) => {
+            this.workshops = workshops;
+            // A better alternative: If you make `this.workshops` and `this.filterKey` as signals, you can compute `this.filteredWorkshops` automatically when either `this.workshops` changes or `this.filterKey` changes
+            this.filterWorkshops();
+        },
+    });
+}
+
   ngOnInit() {
     // this.getWorkshops();
     this.activatedRoute.queryParamMap.subscribe({

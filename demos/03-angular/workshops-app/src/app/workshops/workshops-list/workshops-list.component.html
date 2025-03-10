@@ -33,6 +33,15 @@
 </div>
 }
 
+<div class="btn-group my-3" role="group" aria-label="Filter by category">
+  <button type="button" class="btn btn-danger" (click)="filterByCategory('frontend')">Frontend</button>
+  <button type="button" class="btn btn-warning" (click)="filterByCategory('backend')">Backend</button>
+  <button type="button" class="btn btn-success" (click)="filterByCategory('devops')">Devops</button>
+  <button type="button" class="btn btn-info" (click)="filterByCategory('language')">Language</button>
+  <button type="button" class="btn btn-light" (click)="filterByCategory('mobile')">Mobile</button>
+  <button type="button" class="btn btn-dark" (click)="filterByCategory('database')">Database</button>
+</div>
+
 @if(loading) {
 <app-loading-spinner></app-loading-spinner>
 } @else if( !loading && error ) {

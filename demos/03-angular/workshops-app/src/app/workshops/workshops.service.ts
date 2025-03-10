@@ -9,13 +9,21 @@ import { map } from 'rxjs/operators';
 export class WorkshopsService {
   constructor(private http: HttpClient) {}
 
-  getWorkshops(page: number = 1) {
+  getWorkshops(page: number = 1, category: string = '') {
+    // URLSearchParams() to construct the search params to send to the backend
+    const params: { _page: number; category?: string } = {
+      _page: page,
+    };
+
+    if (category !== '') {
+      params.category = category;
+    }
+
     return this.http.get<IWorkshop[]>(
       `https://workshops-server.onrender.com/workshops/`,
       {
-        params: {
-          _page: page,
-        },
+        // params: params
+        params,
       }
     );
     // .pipe(
