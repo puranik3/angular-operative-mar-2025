@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { WorkshopsService } from '../workshops.service';
 import IWorkshop from '../models/IWorkshop';
 import { LoadingSpinnerComponent } from '../../common/loading-spinner/loading-spinner.component';
@@ -13,6 +14,7 @@ import { ItemComponent } from './item/item.component';
   standalone: true,
   imports: [
     CommonModule,
+    FormsModule,
     LoadingSpinnerComponent,
     ErrorAlertComponent,
     ItemComponent,
@@ -27,6 +29,9 @@ export class WorkshopsListComponent implements OnInit {
   error: Error | null = null;
   page = 1;
 
+  filterKey = 'Angular';
+  filteredWorkshops!: IWorkshop[];
+
   constructor(
     private w: WorkshopsService,
     private router: Router,
@@ -39,6 +44,7 @@ export class WorkshopsListComponent implements OnInit {
     this.w.getWorkshops(this.page).subscribe({
       next: (workshops) => {
         this.workshops = workshops;
+        this.filteredWorkshops = workshops;
         this.loading = false;
         console.log(workshops);
       },
@@ -48,6 +54,12 @@ export class WorkshopsListComponent implements OnInit {
         console.log(error);
       },
     });
+  }
+
+  filterWorkshops() {
+    this.filteredWorkshops = this.workshops.filter((w) =>
+        w.name.toLowerCase().includes(this.filterKey.toLowerCase())
+    );
   }
 
   ngOnInit() {
