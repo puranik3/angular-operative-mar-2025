@@ -8,8 +8,28 @@
 <form id="add-session-form">
   <div class="mb-3">
     <label for="sequenceId" class="form-label">Sequence ID</label>
-    <input type="text" class="form-control" id="sequenceId" />
-    <div class="error-message"></div>
+    <input
+      type="text"
+      class="form-control"
+      id="sequenceId"
+      name="sequenceId"
+      ngModel
+      required
+      pattern="\d+"
+      autocomplete="off"
+      #sequenceId="ngModel"
+    />
+
+    @if( sequenceId.invalid && ( sequenceId.touched || sequenceId.dirty ) &&
+    sequenceId.errors ) {
+    <div class="error-message">
+      @if(sequenceId.errors['required']) {
+      <div>This is required</div>
+      } @if(sequenceId.errors['pattern']) {
+      <div>Provide a positive number</div>
+      }
+    </div>
+    }
   </div>
   <div class="mb-3">
     <label for="name" class="form-label">Name</label>

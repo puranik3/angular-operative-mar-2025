@@ -2,5 +2,11 @@
 h1 {
     color: crimson;
 }
+
+.error-message {
+    color: crimson;
+    font-size: 0.85em;
+}
+
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
