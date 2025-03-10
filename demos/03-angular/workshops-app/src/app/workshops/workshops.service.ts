@@ -3,10 +3,14 @@ import IWorkshop from './models/IWorkshop';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
+import { environment } from '../../environments/environment';
+
 @Injectable({
   providedIn: 'root',
 })
 export class WorkshopsService {
+  apiUrl = environment.apiUrl;
+
   constructor(private http: HttpClient) {}
 
   getWorkshops(page: number = 1, category: string = '') {
@@ -19,13 +23,10 @@ export class WorkshopsService {
       params.category = category;
     }
 
-    return this.http.get<IWorkshop[]>(
-      `https://workshops-server.onrender.com/workshops/`,
-      {
-        // params: params
-        params,
-      }
-    );
+    return this.http.get<IWorkshop[]>(`${this.apiUrl}/workshops/`, {
+      // params: params
+      params,
+    });
     // .pipe(
     //   map( workshops => )
     // )
@@ -35,8 +36,6 @@ export class WorkshopsService {
   }
 
   getWorkshopById(workshopId: number) {
-    return this.http.get<IWorkshop>(
-      `https://workshops-server.onrender.com/workshops/${workshopId}`
-    );
+    return this.http.get<IWorkshop>(`${this.apiUrl}/workshops/${workshopId}`);
   }
 }
