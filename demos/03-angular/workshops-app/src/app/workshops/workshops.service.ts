@@ -33,4 +33,10 @@ export class WorkshopsService {
     // like Promise.all(), Promise.allSettled()...
     // switchMap(), forkJoin()
   }
+
+  getWorkshopById(workshopId: number) {
+    return this.http.get<IWorkshop>(
+      `https://workshops-server.onrender.com/workshops/${workshopId}`
+    );
+  }
 }
