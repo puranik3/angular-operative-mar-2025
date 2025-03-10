@@ -5,6 +5,7 @@ import { RouterOutlet } from '@angular/router';
 import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { MenuComponent } from './menu/menu.component';
 import { HomeComponent } from './home/home.component';
+import { ToastComponent } from './common/toast/toast.component';
 
 @Component({
   selector: 'app-root',
@@ -17,6 +18,7 @@ import { HomeComponent } from './home/home.component';
     MenuComponent,
     HomeComponent,
     RouterOutlet,
+    ToastComponent,
   ],
 })
 export class AppComponent {

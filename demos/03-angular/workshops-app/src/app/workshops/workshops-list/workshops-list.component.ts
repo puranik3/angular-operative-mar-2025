@@ -58,19 +58,19 @@ export class WorkshopsListComponent implements OnInit {
 
   filterWorkshops() {
     this.filteredWorkshops = this.workshops.filter((w) =>
-        w.name.toLowerCase().includes(this.filterKey.toLowerCase())
+      w.name.toLowerCase().includes(this.filterKey.toLowerCase())
     );
   }
 
   filterByCategory(category: string) {
     this.w.getWorkshops(this.page, category).subscribe({
-        next: (workshops) => {
-            this.workshops = workshops;
-            // A better alternative: If you make `this.workshops` and `this.filterKey` as signals, you can compute `this.filteredWorkshops` automatically when either `this.workshops` changes or `this.filterKey` changes
-            this.filterWorkshops();
-        },
+      next: (workshops) => {
+        this.workshops = workshops;
+        // A better alternative: If you make `this.workshops` and `this.filterKey` as signals, you can compute `this.filteredWorkshops` automatically when either `this.workshops` changes or `this.filterKey` changes
+        this.filterWorkshops();
+      },
     });
-}
+  }
 
   ngOnInit() {
     // this.getWorkshops();
@@ -108,5 +108,9 @@ export class WorkshopsListComponent implements OnInit {
         page: this.page,
       },
     });
+  }
+
+  deleteWorkshop(workshop: IWorkshop) {
+    console.log(workshop);
   }
 }
