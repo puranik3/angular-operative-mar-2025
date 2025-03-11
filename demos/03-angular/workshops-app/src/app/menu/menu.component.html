@@ -83,9 +83,7 @@
               [routerLinkActiveOptions]="{ exact: true }"
               >Favorites</a
             >
-            <a ngbDropdownItem href="#" (click)="$event.preventDefault()"
-              >Logout</a
-            >
+            <a ngbDropdownItem href="#" (click)="logout($event)">Logout</a>
           </div>
         </li>
         } @else {

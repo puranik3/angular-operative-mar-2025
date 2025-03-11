@@ -4,6 +4,7 @@
     <button
       class="me-2 btn btn-info btn-sm btn-action-button"
       title="Edit this workshop"
+      [routerLink]="['/workshops', 'edit', workshop.id]"
     >
       <fa-icon [icon]="icons.faPencil"></fa-icon>
     </button>

@@ -20,15 +20,14 @@
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/AngularJS_logo.svg/2000px-AngularJS_logo.svg.png"
     },
     {
-      "name": "React JS Masterclass",
+      "name": "React JS v19",
       "category": "frontend",
-      "id": 2,
-      "description": "<p><strong>React</strong> (also known as <strong>React.js</strong> or <strong>ReactJS</strong>) is a JavaScript library for building user interfaces. It is maintained by Facebook and a community of individual developers and companies.</p><p>React can be used as a base in the development of single-page or mobile applications. Complex React applications usually require the use of additional libraries for state management, routing, and interaction with an API.</p>",
-      "startDate": "2019-01-14T04:30:00.000Z",
-      "endDate": "2019-01-16T12:30:00.000Z",
+      "description": "<p><strong>React v19</strong> (also known as <strong>React.js</strong> or <strong>ReactJS</strong>) is a JavaScript library for building user interfaces. It is maintained by Facebook and a community of individual developers and companies.</p><p>React can be used as a base in the development of single-page or mobile applications. Complex React applications usually require the use of additional libraries for state management, routing, and interaction with an API.</p>",
+      "startDate": "2025-03-14",
+      "endDate": "2025-03-16",
       "time": "10:00 am - 6:00 pm",
       "location": {
-        "address": "Tata Elxsi, IT Park",
+        "address": "Operative",
         "city": "Trivandrum",
         "state": "Kerala"
       },
@@ -36,7 +35,8 @@
         "inPerson": true,
         "online": true
       },
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/640px-React-icon.svg.png"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/640px-React-icon.svg.png",
+      "id": 2
     },
     {
       "name": "Crash course in MongoDB",
@@ -168,6 +168,26 @@
         "online": false
       },
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Git-logo.svg/512px-Git-logo.svg.png"
+    },
+    {
+      "name": "Attractive ads",
+      "category": "frontend",
+      "description": "Something Something",
+      "startDate": "2025-03-11",
+      "endDate": "2025-03-11",
+      "time": "11:00",
+      "location": {
+        "address": "Operative",
+        "city": "Bangalore",
+        "state": "Karnataka"
+      },
+      "modes": {
+        "inPerson": true,
+        "online": false
+      },
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/AngularJS_logo.svg/2000px-AngularJS_logo.svg.png",
+      "createdDate": "Mar 11, 2025",
+      "id": 12
     }
   ],
   "sessions": [

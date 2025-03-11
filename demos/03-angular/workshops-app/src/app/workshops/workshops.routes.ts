@@ -28,6 +28,11 @@ export const routes: Routes = [
     canActivate: [authGuard],
   },
   {
+    path: 'workshops/edit/:id',
+    component: AddWorkshopComponent,
+    title: 'Edit a workshop',
+  },
+  {
     path: 'workshops/:id',
     component: WorkshopDetailsComponent,
     title: 'Workshop Details',

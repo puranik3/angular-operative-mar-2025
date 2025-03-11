@@ -26,4 +26,12 @@ export class MenuComponent {
       (isLoggedIn) => (this.isLoggedIn = isLoggedIn)
     );
   }
+
+  logout(event: Event) {
+    event.preventDefault();
+
+    this.authenticationService.logout();
+
+    this.router.navigateByUrl('/');
+  }
 }
