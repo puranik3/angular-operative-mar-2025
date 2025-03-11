@@ -6,7 +6,11 @@
 <hr />
 
 <!-- Angular creates an object for the form (NgForm) -->
-<form id="add-session-form" [formGroup]="addSessionForm">
+<form
+  id="add-session-form"
+  #addSessionForm="ngForm"
+  (ngSubmit)="addSession(addSessionForm)"
+>
   <div class="mb-3">
     <label for="sequenceId" class="form-label">Sequence ID</label>
     <input
@@ -14,8 +18,11 @@
       class="form-control"
       id="sequenceId"
       name="sequenceId"
+      ngModel
+      required
+      pattern="\d+"
       autocomplete="off"
-      formControlName="sequenceId"
+      #sequenceId="ngModel"
     />
     <!-- sequenceId is now a FormControl object reference -->
     @if( sequenceId.invalid && ( sequenceId.touched || sequenceId.dirty ) &&
@@ -36,7 +43,10 @@
       class="form-control"
       id="name"
       name="name"
-      formControlName="name"
+      required
+      pattern="[A-Z][A-Za-z ]+"
+      ngModel
+      #name="ngModel"
     />
     @if( name.invalid && ( name.touched || name.dirty ) && name.errors ) {
     <div class="error-message">
@@ -55,21 +65,8 @@
       class="form-control"
       id="speaker"
       name="speaker"
-      formControlName="speaker"
+      ngModel
     />
-    @if( speaker.invalid && ( speaker.touched || speaker.dirty ) &&
-    speaker.errors ) {
-    <div class="error-message">
-      @if(speaker.errors['required']) {
-      <div>This is required</div>
-      } @if(speaker.errors['pattern']) {
-      <div>
-        Provide valid names (only letters and spaces for names, and separate
-        names by commas)
-      </div>
-      }
-    </div>
-    }
   </div>
   <div class="mb-3">
     <label for="duration" class="form-label">Duration</label>
@@ -78,36 +75,17 @@
       class="form-control"
       id="duration"
       name="duration"
-      formControlName="duration"
+      ngModel
     />
-    @if( duration.invalid && ( duration.touched || duration.dirty ) &&
-    duration.errors ) {
-    <div class="error-message">
-      @if(duration.errors['required']) {
-      <div>This is required</div>
-      } @if(duration.errors['min']) {
-      <div>Duration is minimum 0.5</div>
-      } @if(duration.errors['max']) {
-      <div>Duration is maximum 10</div>
-      }
-    </div>
-    }
   </div>
   <div class="mb-3">
     <label for="level" class="form-label">Level</label>
-    <select class="form-select" id="level" name="level" formControlName="level">
+    <select class="form-select" id="level" name="level" ngModel>
       <option value="">-- Select a level --</option>
       <option value="Basic">Basic</option>
       <option value="Intermediate">Intermediate</option>
       <option value="Advanced">Advanced</option>
     </select>
-    @if( level.invalid && ( level.touched || level.dirty ) && level.errors ) {
-    <div class="error-message">
-      @if(level.errors['required']) {
-      <div>This is required</div>
-      }
-    </div>
-    }
   </div>
   <div class="mb-3">
     <label for="abstract" class="form-label">Abstract</label>
@@ -116,18 +94,8 @@
       id="abstract"
       rows="3"
       name="abstract"
-      formControlName="abstract"
+      ngModel
     ></textarea>
-    @if( abstract.invalid && ( abstract.touched || abstract.dirty ) &&
-    abstract.errors ) {
-    <div class="error-message">
-      @if(abstract.errors['required']) {
-      <div>This is required</div>
-      } @if(abstract.errors['minlength']) {
-      <div>Minimum 20 characters needed</div>
-      }
-    </div>
-    }
   </div>
   <div class="mb-3">
     <button class="btn btn-primary" [disabled]="addSessionForm.invalid">
