@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import {
+  AbstractControl,
   ReactiveFormsModule,
   NgForm,
   FormGroup,
   FormControl,
   Validators,
+  FormBuilder,
 } from '@angular/forms';
 import { JsonPipe } from '@angular/common';
 
@@ -12,6 +14,48 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { SessionsService } from '../../sessions.service';
 import ISession from '../../models/ISession';
+
+function durationAndLevel(form: AbstractControl) {
+  const durationStr = (form.get('duration') as AbstractControl).value;
+  const duration = +durationStr;
+  const level = (form.get('level') as AbstractControl).value;
+
+  // if valid -> return null
+  // if invalid -> return an object with the details of the error. Further this object should have the property called `durationAndLevel`
+  if (durationStr === '' || level === '') {
+    return null;
+  }
+
+  if (level === 'Basic') {
+    return null;
+  }
+
+  if (level === 'Intermediate') {
+    if (duration >= 2) {
+      return null;
+    }
+
+    // error
+    return {
+      durationAndLevel:
+        'Intermediate level session should be at least 2 hours in duration',
+    };
+  }
+
+  if (level === 'Advanced') {
+    if (duration >= 3) {
+      return null;
+    }
+
+    // error
+    return {
+      durationAndLevel:
+        'Advanced level session should be at least 3 hours in duration',
+    };
+  }
+
+  return null;
+}
 
 @Component({
   selector: 'app-add-session',
@@ -21,50 +65,7 @@ import ISession from '../../models/ISession';
   styleUrl: './add-session.component.scss',
 })
 export class AddSessionComponent {
-  addSessionForm = new FormGroup({
-    sequenceId: new FormControl(
-      '',
-      [
-        Validators.required,
-        Validators.pattern('\\d+'),
-      ]
-    ),
-    name: new FormControl(
-      '',
-      [
-        Validators.required,
-        Validators.pattern('[A-Z][A-Za-z ]+'),
-      ]
-    ),
-    speaker: new FormControl(
-      '',
-      [
-        Validators.required,
-        Validators.pattern('[A-Z][A-Za-z ]+(,[A-Z ][A-Za-z ]+)*'),
-      ]
-    ),
-    duration: new FormControl(
-      '',
-      [
-        Validators.required,
-        Validators.min(0.5),
-        Validators.max(10),
-      ]
-    ),
-    level: new FormControl(
-      '',
-      [
-        Validators.required
-      ]
-    ),
-    abstract: new FormControl(
-      '',
-      [
-        Validators.required,
-        Validators.minLength(20),
-      ]
-    ),
-  });
+  addSessionForm: FormGroup;
 
   // helper accessor methods
   get sequenceId() {
@@ -94,8 +95,35 @@ export class AddSessionComponent {
   constructor(
     private activatedRoute: ActivatedRoute,
     private sessionsService: SessionsService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private fb: FormBuilder
+  ) {
+    this.addSessionForm = this.fb.group(
+      {
+        sequenceId: ['', [Validators.required, Validators.pattern('\\d+')]],
+        name: [
+          '',
+          [Validators.required, Validators.pattern('[A-Z][A-Za-z ]+')],
+        ],
+        speaker: [
+          '',
+          [
+            Validators.required,
+            Validators.pattern('[A-Z][A-Za-z ]+(,[A-Z ][A-Za-z ]+)*'),
+          ],
+        ],
+        duration: [
+          '',
+          [Validators.required, Validators.min(0.5), Validators.max(10)],
+        ],
+        level: ['', [Validators.required]],
+        abstract: ['', [Validators.required, Validators.minLength(20)]],
+      },
+      {
+        validators: durationAndLevel,
+      }
+    );
+  }
 
   addSession() {
     const id = +(this.activatedRoute.snapshot.parent?.paramMap.get(
