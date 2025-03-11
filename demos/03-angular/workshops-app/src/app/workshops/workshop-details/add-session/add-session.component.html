@@ -6,7 +6,7 @@
 <hr />
 
 <!-- Angular creates an object for the form (NgForm) -->
-<form id="add-session-form" [formGroup]="addSessionForm">
+<form id="add-session-form" [formGroup]="addSessionForm" (ngSubmit)="addSession()">
   <div class="mb-3">
     <label for="sequenceId" class="form-label">Sequence ID</label>
     <input

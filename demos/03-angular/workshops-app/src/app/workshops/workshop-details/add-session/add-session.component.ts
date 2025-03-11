@@ -22,28 +22,48 @@ import ISession from '../../models/ISession';
 })
 export class AddSessionComponent {
   addSessionForm = new FormGroup({
-    sequenceId: new FormControl('', [
-      Validators.required,
-      Validators.pattern('\\d+'),
-    ]),
-    name: new FormControl('', [
-      Validators.required,
-      Validators.pattern('[A-Z][A-Za-z ]+'),
-    ]),
-    speaker: new FormControl('', [
-      Validators.required,
-      Validators.pattern('[A-Z][A-Za-z ]+(,[A-Z ][A-Za-z ]+)*'),
-    ]),
-    duration: new FormControl('', [
-      Validators.required,
-      Validators.min(0.5),
-      Validators.max(10),
-    ]),
-    level: new FormControl('', [Validators.required]),
-    abstract: new FormControl('', [
-      Validators.required,
-      Validators.minLength(20),
-    ]),
+    sequenceId: new FormControl(
+      '',
+      [
+        Validators.required,
+        Validators.pattern('\\d+'),
+      ]
+    ),
+    name: new FormControl(
+      '',
+      [
+        Validators.required,
+        Validators.pattern('[A-Z][A-Za-z ]+'),
+      ]
+    ),
+    speaker: new FormControl(
+      '',
+      [
+        Validators.required,
+        Validators.pattern('[A-Z][A-Za-z ]+(,[A-Z ][A-Za-z ]+)*'),
+      ]
+    ),
+    duration: new FormControl(
+      '',
+      [
+        Validators.required,
+        Validators.min(0.5),
+        Validators.max(10),
+      ]
+    ),
+    level: new FormControl(
+      '',
+      [
+        Validators.required
+      ]
+    ),
+    abstract: new FormControl(
+      '',
+      [
+        Validators.required,
+        Validators.minLength(20),
+      ]
+    ),
   });
 
   // helper accessor methods
@@ -77,30 +97,32 @@ export class AddSessionComponent {
     private router: Router
   ) {}
 
-  addSession(addSessionForm: NgForm) {
+  addSession() {
     const id = +(this.activatedRoute.snapshot.parent?.paramMap.get(
       'id'
     ) as string);
 
-    console.log(addSessionForm.value);
+    console.log(this.addSessionForm.value);
 
     const newSession = {
-      ...addSessionForm.value,
+      ...this.addSessionForm.value,
       workshopId: id,
       upvoteCount: 0,
-      sequenceId: +addSessionForm.value.sequenceId,
+      sequenceId: +(this.addSessionForm.value.sequenceId as string),
       // duration: +addSessionForm.value.duration,
-    } as Omit<ISession, 'id'>;
+    };
 
     console.log(newSession);
 
-    this.sessionsService.addSession(newSession).subscribe({
-      next: (addedSession) => {
-        alert(`Added session with id = ${addedSession.id}`);
+    this.sessionsService
+      .addSession(newSession as unknown as Omit<ISession, 'id'>)
+      .subscribe({
+        next: (addedSession) => {
+          alert(`Added session with id = ${addedSession.id}`);
 
-        // You can also use navigateByUrl()
-        this.router.navigate(['/workshops', id]);
-      },
-    });
+          // You can also use navigateByUrl()
+          this.router.navigate(['/workshops', id]);
+        },
+      });
   }
 }
