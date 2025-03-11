@@ -35,6 +35,7 @@
             >Home</a
           >
         </li>
+        @if ( isLoggedIn ) {
         <li class="nav-item">
           <a
             class="nav-link"
@@ -54,10 +55,12 @@
             Add a workshop
           </a>
         </li>
+        }
       </ul>
 
       <!-- right menu (no .me-auto)-->
       <ul class="navbar-nav mb-2 mb-lg-0">
+        @if ( isLoggedIn ) {
         <li class="nav-item" ngbDropdown>
           <a
             class="nav-link"
@@ -85,6 +88,19 @@
             >
           </div>
         </li>
+        } @else {
+        <!-- Add conditional rendering - Login link is to be displayed only when user is NOT logged in -->
+        <li class="nav-item" role="button">
+          <a
+            class="nav-link"
+            routerLink="/login"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            tabindex="0"
+            >Login</a
+          >
+        </li>
+        }
 
         <!--
           <li
