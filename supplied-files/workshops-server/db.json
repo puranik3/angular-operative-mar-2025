@@ -576,6 +576,18 @@
       "abstract": "New session",
       "createdDate": "Jan 08, 2025",
       "id": 47
+    },
+    {
+      "sequenceId": 15,
+      "name": "New session in Angular Operative",
+      "speaker": "John Doe",
+      "duration": 1,
+      "level": "Advanced",
+      "abstract": "sbdckewbfjkwebjk",
+      "workshopId": 1,
+      "upvoteCount": 0,
+      "createdDate": "Mar 10, 2025",
+      "id": 48
     }
   ],
   "users": [

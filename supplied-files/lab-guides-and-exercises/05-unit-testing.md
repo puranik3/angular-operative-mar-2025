@@ -1,3 +1,26 @@
+## Angular Unit Testing
+
+Course material source: Angular University
+
+## Steps to get started
+Switch to `1-start` branch
+```sh
+git checkout 1-start
+```
+- Start the server in one terminal
+```
+npm run server
+```
+- Start the app in a second terminal
+```
+npm start
+```
+- Run the tests in a third terminal
+```sh
+npm test
+```
+- __Note__: Since we are running tests, terminal 1, 2 are optional
+
 ## Unit testing in Angular
 
 1. `calculator.service.spec.ts`  
